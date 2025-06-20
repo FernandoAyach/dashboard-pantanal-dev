@@ -1,25 +1,32 @@
-import streamlit as st
 from logic.profile import InvestorProfile
 
-def profile_card(profile: InvestorProfile): 
-    with st.container(border=True):
-        col1, col2 = st.columns([0.2, 0.8])
+def profile_card(profile: InvestorProfile) -> str:
+    return f"""
+    <a href="#" id="{profile.id}" style="text-decoration: none; color: inherit;">
+        <div style="
+            border: 1px solid #DDD;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 10px 0;
+            display: flex;
+            cursor: pointer;
+            transition: box-shadow 0.3s ease;
+        " onmouseover="this.style.boxShadow='0 4px 12px rgba(0,0,0,0.1)'" 
+          onmouseout="this.style.boxShadow='none'">
 
-        with col1:
-            st.markdown(f"""
-                <div style="
-                    width: 50px;
-                    height: 50px;
-                    background-color: {profile.color};
-                    border-radius: 50%;
-                    margin-top: 20px;">
-                </div>
-            """, unsafe_allow_html=True)
+            <div style="
+                flex: 0 0 50px;
+                height: 50px;
+                background-color: {profile.color};
+                border-radius: 50%;
+                margin-right: 16px;
+                margin-top: 8px;">
+            </div>
 
-        with col2:
-            st.subheader(profile.title)
-            st.write(profile.description)
-
-        if st.button("Ver Dashboard", key=f"btn_{profile.id}"):
-            st.session_state['selected_profile_id'] = profile.id
-            st.rerun()
+            <div>
+                <h4 style="margin: 0 0 8px 0;">{profile.title}</h4>
+                <p style="margin: 0; color: #555;">{profile.description}</p>
+            </div>
+        </div>
+    </a>
+    """
