@@ -1,14 +1,8 @@
 from dataclasses import dataclass
 from typing import List
 
-
 @dataclass()
 class InvestorProfile:
-    """
-    Represents an investor profile.
-    This is a Plain Old Python Object (POPO) with no logic,
-    only data attributes. It represents our core domain entity.
-    """
     id: int
     title: str 
     description: str
@@ -16,24 +10,12 @@ class InvestorProfile:
 
 
 class ProfileService:
-    """
-    This class contains the business logic related to investor profiles.
-    It decouples the application logic from the data source and the presentation.
-    """
-
     def __init__(self, repository):
        
         self._repository = repository
 
-    
     def get_all_profiles(self) -> List[InvestorProfile]:
-        """
-        Gets raw data from the repository and maps it to a list of
-        InvestorProfile domain objects.
-        """
-        
         profile_df = self._repository.get_profiles_data()
-
         profiles_list = []
 
         for _, row in profile_df.iterrows():
