@@ -1,13 +1,13 @@
 # data/profile_repository.py
 import pandas as pd
 
-class ProfileRepository:
+class ProfileRepositoryMockup:
     """
     This class is responsible for loading the investor profile data.
     It simulates loading from a data source (like a CSV or database)
     and returns a pandas DataFrame.
     """
-
+    
     def get_profiles_data(self) -> pd.DataFrame:
         """
         Loads and returns a DataFrame with profile data.

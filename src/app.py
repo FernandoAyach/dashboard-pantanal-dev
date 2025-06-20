@@ -3,7 +3,7 @@ import plotly.express as px
 import pandas as pd
 
 #import layers
-from data.profile_repository import ProfileRepository
+from data.profile_repository_mockup import ProfileRepositoryMockup
 from logic.profile import ProfileService
 from presentation.investor_profiles_view import investor_profiles_view
 
@@ -11,7 +11,7 @@ from presentation.investor_profiles_view import investor_profiles_view
 # **** Dependency Injection Setup ****
 # This is where we wire up our application layers.
 # We could easily swap implementations here (e.g., use a different repository).
-profile_repository = ProfileRepository()
+profile_repository = ProfileRepositoryMockup()
 profile_service = ProfileService(repository= profile_repository)
 
 
