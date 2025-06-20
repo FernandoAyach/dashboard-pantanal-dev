@@ -7,8 +7,6 @@ from data.profile_repository import ProfileRepository
 from logic.profile import ProfileService
 from presentation.investor_profiles_view import investor_profiles_view
 
-# Configurate the page
-st.set_page_config(layout="wide")
 
 # **** Dependency Injection Setup ****
 # This is where we wire up our application layers.
