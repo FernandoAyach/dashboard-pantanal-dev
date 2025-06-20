@@ -18,7 +18,7 @@ def profile_card(profile: InvestorProfile):
             st.markdown(f"""
                 <div style="
                     width: 50px;
-                    width: 50px;
+                    height: 50px;
                     background-color: {profile.color};
                     border-radius: 50%;
                     margin-top: 20px;">
