@@ -5,7 +5,7 @@ from data.estado_data import carregar_estados
 from data.cluster_data import carregar_clusters
 
 
-def construir_mapa():
+def construir_mapa(perfil_filtrado=None):
     geojson = carregar_geojson('https://raw.githubusercontent.com/codeforamerica/click_that_hood/master/public/data/brazil-states.geojson')
     df_estados = carregar_estados()
     df_clusters = carregar_clusters()
@@ -21,6 +21,10 @@ def construir_mapa():
     )
 
     cores = {'Conservador': 'red', 'Moderado': 'green', 'Agressivo': 'purple'}
+
+    if perfil_filtrado:
+        df_clusters = df_clusters[df_clusters['Perfil_Investidor'] == perfil_filtrado]
+
     for perfil in df_clusters['Perfil_Investidor'].unique():
         dados = df_clusters[df_clusters['Perfil_Investidor'] == perfil]
         fig.add_scattergeo(
@@ -54,3 +58,4 @@ def construir_mapa():
     )
 
     return fig
+
