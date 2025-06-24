@@ -1,7 +1,7 @@
 import pandas as pd
 
-def carregar_clusters():
-    dados = {
+def load_clusters():
+    data = {
             'Cidade': [
             'São Paulo', 'Rio de Janeiro', 'Belo Horizonte', 'Salvador', 'Porto Alegre',
             'São Gonçalo', 'Duque de Caxias', 'Caxias do Sul', 'Campinas', 'Barueri',
@@ -58,4 +58,4 @@ def carregar_clusters():
             73, 32
         ]
     }
-    return pd.DataFrame(dados)
+    return pd.DataFrame(data)

@@ -1,7 +1,7 @@
 import pandas as pd
 
-def carregar_estados():
-    estados_completo = [
+def load_states():
+    states = [
         ("AC", "Acre", -9.97499, -67.8243),
         ("AL", "Alagoas", -9.66599, -35.735),
         ("AP", "Amapá", 0.034934, -51.0694),
@@ -31,6 +31,6 @@ def carregar_estados():
         ("TO", "Tocantins", -10.184, -48.3336)
     ]
 
-    df = pd.DataFrame(estados_completo, columns=['UF', 'Estado', 'Latitude', 'Longitude'])
+    df = pd.DataFrame(states, columns=['UF', 'Estado', 'Latitude', 'Longitude'])
     df['CorFixa'] = 1
     return df
