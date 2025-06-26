@@ -2,6 +2,17 @@ from dataclasses import dataclass
 from typing import List, Dict, Optional
 from data.profile_map_repository_mockup import ProfileMapRepository
 import pandas as pd
+from data.profile_repository_mockup import ProfileRepositoryMockup
+from logic.profile import ProfileService
+
+# dentro de ProfileMapService.get_map_data
+repo = ProfileRepositoryMockup()
+service = ProfileService(repository=repo)
+profiles = service.get_all_profiles()
+
+# Gerar os mapas: id → cor e id → título
+color_map = {p.id: p.color for p in profiles}
+title_map = {p.id: p.title for p in profiles}
 
 @dataclass
 class InvestorCluster:
@@ -16,6 +27,8 @@ class ProfileMapData:
     geojson: Dict
     states_df: pd.DataFrame
     cluster: List[InvestorCluster]
+    color_map: Dict[int, str]
+    title_map: Dict[int, str]
 
 class ProfileMapService:
 
@@ -42,7 +55,9 @@ class ProfileMapService:
         return ProfileMapData(
             geojson=geojson,
             states_df=states_df,
-            clusters=investor_clusters
+            cluster=investor_clusters,
+            color_map=color_map,
+            title_map=title_map
         )
     
 

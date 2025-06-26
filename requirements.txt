@@ -2,3 +2,4 @@ streamlit
 plotly
 pandas
 st_click_detector
+python-dotenv
