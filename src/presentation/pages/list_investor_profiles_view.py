@@ -5,8 +5,7 @@ from logic.profile import InvestorProfile
 from presentation.components.profile_card import profile_card
 
 def list_investor_profiles_view(profiles: List[InvestorProfile]):
-    st.title("Perfis de investidores")
-
+    
     col1, col2 = st.columns(2)
 
     html_col1 = ""

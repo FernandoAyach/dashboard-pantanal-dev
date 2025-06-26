@@ -7,20 +7,20 @@ class ProfileRepositoryMockup:
             'title': [
                 'Poupança forte em SP', 'Depósitos à prazo BA', 'Poupança paulista',
                 'Depósitos à prazo MG', 'Depósitos a prazo no RS', 'Depósitos à prazo MG',
-                'Crédito rural no RJ', 'Crédito rural no RJ', 'Poupança forte em SP',
+                'Crédito rural no RJ', 'Crédito rural no RJ', 'Poupança forte em SP (secundário)',
                 'Depósitos à prazo no PR'
             ],
             'description': [
-                'Investidores de São Paulo que gostam de poupança',
-                'Investidores de São Paulo que gostam de poupança',
-                'Investidores de São Paulo que gostam de poupança',
-                'Investidores de São Paulo que gostam de poupança',
-                'Investidores de São Paulo que gostam de poupança',
-                'Investidores de São Paulo que gostam de poupança',
-                'Investidores de São Paulo que gostam de poupança',
-                'Investidores de São Paulo que gostam de poupança',
-                'Investidores de São Paulo que gostam de poupança',
-                'Investidores de São Paulo que gostam de poupança'
+                'Investidores paulistas conservadores com foco em poupança',
+                'Bahianos moderados com preferência por depósitos a prazo',
+                'Poupança com perfil agressivo em SP',
+                'Mineiros com foco agressivo em depósitos a prazo',
+                'Gaúchos moderados e organizados financeiramente',
+                'Crédito rural fluminense com perfil conservador',
+                'Perfil agressivo no norte do país',
+                'Paranaenses moderados em depósitos',
+                'Investidores de São Paulo que gostam de poupança (variante)',
+                'Investidos paranaenses'
             ],
             'color': [
                 '#002776', '#FFDE00', '#2E8B57', '#4B0082', '#ADFF2F', '#FF69B4',
