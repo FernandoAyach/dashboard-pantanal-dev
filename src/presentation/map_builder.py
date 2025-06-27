@@ -58,8 +58,11 @@ def build_map_figure(map_data: ProfileMapData) -> go.Figure:
     )
 
     fig.update_layout(
-        margin=dict(l=0, r=0, t=0, b=0),
-        height=800,
+        margin=dict(l=10, r=10, t=10, b=10),
+        paper_bgcolor="#DCDCDC",        # Cor da "borda"
+        plot_bgcolor="white",             # Cor do fundo do mapa            
+        
+        height=510,
         showlegend=False,
         legend=dict(
             yanchor="top",
@@ -68,7 +71,7 @@ def build_map_figure(map_data: ProfileMapData) -> go.Figure:
             x=0.01
         ),
         coloraxis_showscale=False,
-        modebar=dict(orientation='h'),  # ← Torna a barra horizontal
+        modebar=dict(orientation='h'),
     )
 
 
