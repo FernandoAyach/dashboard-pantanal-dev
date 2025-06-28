@@ -12,5 +12,5 @@ class ProfileMapRepository:
     def get_states_data(self) -> pd.DataFrame:
         return load_states()
     
-    def get_cluster_data(self) -> pd.DataFrame():
+    def get_cluster_data(self) -> pd.DataFrame:
         return load_clusters()

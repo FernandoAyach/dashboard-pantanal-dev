@@ -36,16 +36,16 @@ def load_clusters():
             -37.0628, -48.3336
         ],
         'Perfil_Investidor': [
-            1, 7, 3, 2, 5,     # São Paulo, Rio de Janeiro, BH, Salvador, Porto Alegre
-            1, 7, 5, 1, 1,     # São Gonçalo, Duque de Caxias, Caxias do Sul, Campinas, Barueri
+            0, 0, 3, 2, 5,     # São Paulo, Rio de Janeiro, BH, Salvador, Porto Alegre
+            1, 0, 5, 1, 1,     # São Gonçalo, Duque de Caxias, Caxias do Sul, Campinas, Barueri
             1, 3, 4, 4, 4,     # Guarulhos, Franca, Dourados, Contagem, Uberlândia
-            2, 7, 7, 5, 5,     # Petrolina, Sobral, Parintins, Ananindeua, Joinville
-            5, 5, 10, 10, 4,   # Blumenau, Guarapuava, Cascavel, Londrina, Maringá
+            2, 0, 0, 5, 5,     # Petrolina, Sobral, Parintins, Ananindeua, Joinville
+            5, 5, 1, 1, 4,   # Blumenau, Guarapuava, Cascavel, Londrina, Maringá
             4, 1, 6, 2, 2,     # Anápolis, Brasília, Rio Branco, Maceió, Macapá
-            7, 2, 6, 4, 5,     # Manaus, Fortaleza, Vitória, Goiânia, São Luís
-            4, 1, 2, 3, 10,    # Cuiabá, Campo Grande, Belém, João Pessoa, Curitiba
-            2, 2, 2, 7, 7,     # Recife, Teresina, Natal, Porto Velho, Boa Vista
-            8, 2, 5               # Florianópolis, Aracaju, Palmas
+            0, 2, 6, 4, 5,     # Manaus, Fortaleza, Vitória, Goiânia, São Luís
+            4, 1, 2, 3, 1,    # Cuiabá, Campo Grande, Belém, João Pessoa, Curitiba
+            2, 2, 2, 0, 0,     # Recife, Teresina, Natal, Porto Velho, Boa Vista
+            2, 2, 5               # Florianópolis, Aracaju, Palmas
         ],
 
         'Quantidade': [

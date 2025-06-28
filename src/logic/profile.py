@@ -1,30 +1,42 @@
-from dataclasses import dataclass
-from typing import List
+# src/logic/profile.py
 
-@dataclass()
+from dataclasses import dataclass
+from data.profile_repository_mockup import ProfileRepositoryMockup
+from typing import List
+from typing import Optional
+
+@dataclass
 class InvestorProfile:
     id: int
-    title: str 
+    title: str
     description: str
     color: str
 
-
 class ProfileService:
-    def __init__(self, repository):
-       
-        self._repository = repository
+    def __init__(self, repository: ProfileRepositoryMockup):
+        self.repository = repository
 
     def get_all_profiles(self) -> List[InvestorProfile]:
-        profile_df = self._repository.get_profiles_data()
-        profiles_list = []
+        df = self.repository.get_profiles_data()
+        return [
+            InvestorProfile(
+                id=row["id"],
+                title=row["title"],
+                description=row["description"],
+                color=row["color"]
+            )
+            for _, row in df.iterrows()
+        ]
 
-        for _, row in profile_df.iterrows():
-           profiles_list.append(
-               InvestorProfile(
-                   id = row['id'],
-                   title = row['title'],
-                   description = row['description'],
-                   color = row['color']
-               )
-           )
-        return profiles_list
+    def get_profile_by_id(self, profile_id: int) -> Optional[InvestorProfile]:
+        df = self.repository.get_profiles_data()
+        row = df[df["id"] == profile_id]
+        if row.empty:
+            return None
+        row = row.iloc[0]
+        return InvestorProfile(
+            id=row["id"],
+            title=row["title"],
+            description=row["description"],
+            color=row["color"]
+        )

@@ -71,5 +71,4 @@ def build_map_figure(map_data: ProfileMapData) -> go.Figure:
         modebar=dict(orientation='h'),
     )
 
-
     return fig

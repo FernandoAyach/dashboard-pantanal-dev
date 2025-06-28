@@ -3,28 +3,25 @@ import pandas as pd
 class ProfileRepositoryMockup:
     def get_profiles_data(self) -> pd.DataFrame:
         data = {
-            'id': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+            'id': [0, 1, 2, 3, 4, 5],
             'title': [
-                'Poupança forte em SP', 'Depósitos à prazo BA', 'Poupança paulista',
-                'Depósitos à prazo MG', 'Depósitos a prazo no RS', 'Depósitos à prazo MG',
-                'Crédito rural no RJ', 'Crédito rural no RJ', 'Poupança forte em SP (secundário)',
-                'Depósitos à prazo no PR'
+                'Conglomerado Institucional', 
+                'Tesouraria Institucional / Gestora de Ativos',
+                'Cooperativa / Grande Empresa Agro (PJ Agro)',
+                'Produtor Rural (Pessoa Física)',
+                'Empresa Comercial Tomadora de Crédito',
+                'Cliente de Varejo Padrão'
             ],
             'description': [
-                'Investidores paulistas conservadores com foco em poupança',
-                'Bahianos moderados com preferência por depósitos a prazo',
-                'Poupança com perfil agressivo em SP',
-                'Mineiros com foco agressivo em depósitos a prazo',
-                'Gaúchos moderados e organizados financeiramente',
-                'Crédito rural fluminense com perfil conservador',
-                'Perfil agressivo no norte do país',
-                'Paranaenses moderados em depósitos',
-                'Investidores de São Paulo que gostam de poupança (variante)',
-                'Investidos paranaenses'
+                'Clientes com perfil corporativo, de grande porte',
+                'Instituições focadas em acumulação e gestão de liquidez',
+                'Empresas rurais com atuação intensiva no agronegócio',
+                'Indivíduos vinculados ao setor agrícola',
+                'PMEs urbanas com alta demanda por capital de giro',
+                'Pessoa física com uso mínimo de produtos financeiros'
             ],
             'color': [
                 '#002776', '#FFDE00', '#2E8B57', '#4B0082', '#ADFF2F', '#FF69B4',
-                '#DC143C', '#FFA500', '#8A2BE2', '#C70039'
             ]
         }
         return pd.DataFrame(data)
