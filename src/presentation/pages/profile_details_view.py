@@ -24,18 +24,34 @@ def profile_details_view(profile_id: int):
     details_service = InvestorDetailsService(details_repo)
     df_investidores = details_service.get_by_profile_id(perfil.id)
 
-    def gerar_pizza(dados, coluna, titulo):
+    def classificar_faixa_etaria(idade):
+        if idade <= 17:
+            return "<18"
+        elif idade <= 25:
+            return "18-25"
+        elif idade <= 35:
+            return "26-35"
+        elif idade <= 45:
+            return "36-45"
+        elif idade <= 60:
+            return "46-60"
+        else:
+            return "60+"
+
+    df_investidores["FaixaEtaria"] = df_investidores["Idade"].apply(classificar_faixa_etaria)
+
+    def gerar_pie(dados, coluna, titulo):
         contagem = dados[coluna].value_counts().reset_index()
         contagem.columns = [coluna, "quantidade"]
         fig = px.pie(contagem, names=coluna, values="quantidade", title=titulo, hole=0.4)
         fig.update_traces(textposition='inside', textinfo='percent+label')
         return fig
 
-    genero_fig = gerar_pizza(df_investidores, "genero", "Gênero")
-    faixa_etaria_fig = gerar_pizza(df_investidores, "faixa_etaria", "Faixa etária")
+    genero_fig = gerar_pie(df_investidores, "Genero", "Gênero")
+    faixa_etaria_fig = gerar_pie(df_investidores, "FaixaEtaria", "Faixa etária")
 
     # Gráfico de distribuição pelos estados
-    estado_fig = gerar_pizza(df_investidores, "estado", "Distribuição pelos estados do Brasil")
+    estado_fig = gerar_pie(df_investidores, "UF", "Distribuição pelos estados do Brasil")
 
     col1, col2 = st.columns([1.5, 1])
 
@@ -60,7 +76,13 @@ def profile_details_view(profile_id: int):
         service = ProfileMapService(repo)
         map_data = service.get_map_data(profile_filter=perfil.id)
         fig = build_map_figure(map_data)
+
         st.plotly_chart(fig, use_container_width=True)
+
+        subcol1, subcol2 = st.columns([1, 1])
+
+        subcol1.container(border=True).plotly_chart(genero_fig, use_container_width=True)
+        subcol2.container(border=True).plotly_chart(faixa_etaria_fig, use_container_width=True)
 
     with col2:
         st.markdown(f"""
@@ -83,8 +105,6 @@ def profile_details_view(profile_id: int):
         st.markdown(perfil.description)
 
         st.plotly_chart(estado_fig, use_container_width=True)
-        st.plotly_chart(genero_fig, use_container_width=True)
-        st.plotly_chart(faixa_etaria_fig, use_container_width=True)
 
         if st.button("Voltar para lista"):
             del st.session_state["selected_profile_id"]

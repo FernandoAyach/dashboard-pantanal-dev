@@ -8,4 +8,4 @@ class InvestorDetailsService:
 
     def get_by_profile_id(self, profile_id: int) -> pd.DataFrame:
         df = self.repository.load_data()
-        return df[df["perfil_id"] == profile_id]
+        return df[df["Perfil_Cluster"] == profile_id]

@@ -1,7 +1,7 @@
 import pandas as pd
 
 class InvestorDetailsRepository:
-    def __init__(self, csv_path: str = "data/investor_details_mock.csv"):
+    def __init__(self, csv_path: str = "data/perfis_clientes.csv"):
         self.csv_path = csv_path
 
     def load_data(self) -> pd.DataFrame:
