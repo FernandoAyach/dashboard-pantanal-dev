@@ -68,7 +68,7 @@ def render_home():
         st.markdown("""
             <div style="text-align: center;">
                 <h3 style="margin-top: 0; margin-bottom: 20px; 
-                        border: 1px solid #ccc; padding: 8px; 
+                        border: 1px solid #a3a3c2; padding: 8px; 
                         border-radius: 6px;">Mapa de Investidores</h3>
             </div>
         """, unsafe_allow_html=True)
@@ -88,7 +88,7 @@ def render_home():
         st.markdown("""
             <div style="text-align: center;">
                 <h3 style="margin-top: 0; margin-bottom: 0px; 
-                        border: 1px solid #ccc; padding: 8px; 
+                        border: 1px solid #a3a3c2; padding: 8px; 
                         border-radius: 6px;">Perfis de investidores</h3>
             </div>
         """, unsafe_allow_html=True)
