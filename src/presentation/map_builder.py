@@ -58,10 +58,7 @@ def build_map_figure(map_data: ProfileMapData) -> go.Figure:
     )
 
     fig.update_layout(
-        margin=dict(l=10, r=10, t=10, b=10),
-        paper_bgcolor="#DCDCDC",        # Cor da "borda"
         plot_bgcolor="white",             # Cor do fundo do mapa            
-        
         height=510,
         showlegend=False,
         legend=dict(
