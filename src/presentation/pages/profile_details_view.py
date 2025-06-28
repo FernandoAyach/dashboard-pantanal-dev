@@ -60,7 +60,6 @@ def profile_details_view(profile_id: int):
     genero_fig = gerar_pie(df_investidores, "Genero", "Gênero")
     faixa_etaria_fig = gerar_pie(df_investidores, "FaixaEtaria", "Faixa etária")
 
-    # Gráfico de distribuição pelos estados
     estado_fig = gerar_pie(df_investidores, "UF", "Distribuição pelos estados do Brasil")
 
     cidade_fig = gerar_pie(df_investidores, "Cidade", "Principais Cidades", top_n=40)
