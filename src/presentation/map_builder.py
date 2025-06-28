@@ -1,17 +1,10 @@
-# src/presentation/map_builder.py
-
 import plotly.express as px
 import plotly.graph_objects as go
 import pandas as pd
 from logic.profile_map import ProfileMapData
 
 def build_map_figure(map_data: ProfileMapData) -> go.Figure:
-    """
-    Constrói a figura do mapa usando os dados encapsulados em ProfileMapData.
-    Essa função cuida apenas da visualização.
-    """
 
-    # Mapa base com estados coloridos fixamente
     fig = px.choropleth(
         map_data.states_df,
         geojson=map_data.geojson,
@@ -22,7 +15,6 @@ def build_map_figure(map_data: ProfileMapData) -> go.Figure:
         range_color=(0, 1),
     )
 
-    # Converter lista de clusters para DataFrame
     clusters_df = pd.DataFrame([c.__dict__ for c in map_data.cluster])
 
     if map_data.profile_filter is not None:

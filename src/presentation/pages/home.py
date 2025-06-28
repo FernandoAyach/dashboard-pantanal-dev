@@ -10,12 +10,10 @@ from presentation.map_builder import build_map_figure
 def render_home():
     st.set_page_config(layout="wide")
 
-    # Se um perfil estiver selecionado, mostrar tela de detalhes
     if "selected_profile_id" in st.session_state:
         profile_details_view(st.session_state["selected_profile_id"])
         return
 
-    # Spinner centralizado
     spinner_html = st.empty()
     spinner_html.markdown("""
         <style>
@@ -49,7 +47,6 @@ def render_home():
         </div>
     """, unsafe_allow_html=True)
 
-    # Carregamento real
     repo = ProfileMapRepository()
     service = ProfileMapService(repo)
     map_data = service.get_map_data()
@@ -58,10 +55,8 @@ def render_home():
     profile_service = ProfileService(repository=profile_repository)
     all_profiles = profile_service.get_all_profiles()
 
-    # Remove o spinner
     spinner_html.empty()
 
-    # Layout com colunas
     col1, col2 = st.columns([1.5, 1])
     
     with col1:

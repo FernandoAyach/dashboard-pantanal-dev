@@ -1,5 +1,3 @@
-# src/logic/profile.py
-
 from dataclasses import dataclass
 from data.profile_repository_mockup import ProfileRepositoryMockup
 from typing import List

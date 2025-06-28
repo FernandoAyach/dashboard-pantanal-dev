@@ -1,5 +1,3 @@
-# src/logic/profile_map.py
-
 from dataclasses import dataclass
 from typing import List, Dict, Optional
 from data.profile_map_repository_mockup import ProfileMapRepository
@@ -34,11 +32,9 @@ class ProfileMapService:
         states_df = self._repository.get_states_data()
         clusters_df = self._repository.get_cluster_data()
 
-        # Filtragem por perfil (ocorre antes da transformação)
         if profile_filter is not None:
             clusters_df = clusters_df[clusters_df["Perfil_Investidor"] == profile_filter]
 
-        # Buscar perfis e montar mapeamentos
         profile_repo = ProfileRepositoryMockup()
         profile_service = ProfileService(profile_repo)
         profiles = profile_service.get_all_profiles()
@@ -46,7 +42,6 @@ class ProfileMapService:
         color_map = {p.id: p.color for p in profiles}
         title_map = {p.id: p.title for p in profiles}
 
-        # Converter para lista de objetos InvestorCluster
         investor_clusters = [
             InvestorCluster(
                 city=row['Cidade'],

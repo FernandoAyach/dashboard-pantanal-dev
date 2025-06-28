@@ -1,5 +1,3 @@
-# src/data/cluster_data.py
-
 import pandas as pd
 
 def load_clusters():
@@ -27,7 +25,7 @@ def load_clusters():
 
         ("Rio de Janeiro", -22.9068, -43.1729, 2, 41289),
 
-        ("Rio de Janeiro", -22.9068, -43.1729, 3, 33909),
+        ("Brasília", -15.7797, -47.9297, 3, 33909),
 
         ("Porto Alegre", -30.0346, -51.2177, 4, 9437),
 
