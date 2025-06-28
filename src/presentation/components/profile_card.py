@@ -4,7 +4,7 @@ def profile_card(profile: InvestorProfile) -> str:
     return f"""
     <a href="#" id="{profile.id}" style="text-decoration: none; color: inherit;">
         <div style="
-            border: 1px solid #DDD;
+            border: 1px solid #a3a3c2;
             border-radius: 12px;
             padding: 16px;
             margin: 12px 0;

@@ -67,8 +67,8 @@ def render_home():
     with col1:
         st.markdown("""
             <div style="text-align: center;">
-                <h3 style="margin-top: 0; margin-bottom: 16px; 
-                        border: 1px solid #ccc; padding: 8px; 
+                <h3 style="margin-top: 0; margin-bottom: 20px; 
+                        border: 1px solid #a3a3c2; padding: 8px; 
                         border-radius: 6px;">Mapa de Investidores</h3>
             </div>
         """, unsafe_allow_html=True)
@@ -82,13 +82,13 @@ def render_home():
             </style>
         """, unsafe_allow_html=True)
 
-        st.plotly_chart(mapa, use_container_width=True)
+        st.container(border=True).plotly_chart(mapa, use_container_width=True)
 
     with col2:
         st.markdown("""
             <div style="text-align: center;">
-                <h3 style="margin-top: 0; margin-bottom: 16px; 
-                        border: 1px solid #ccc; padding: 8px; 
+                <h3 style="margin-top: 0; margin-bottom: 0px; 
+                        border: 1px solid #a3a3c2; padding: 8px; 
                         border-radius: 6px;">Perfis de investidores</h3>
             </div>
         """, unsafe_allow_html=True)
