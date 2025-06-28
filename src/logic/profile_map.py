@@ -1,23 +1,16 @@
+# src/logic/profile_map.py
+
 from dataclasses import dataclass
 from typing import List, Dict, Optional
 from data.profile_map_repository_mockup import ProfileMapRepository
-import pandas as pd
 from data.profile_repository_mockup import ProfileRepositoryMockup
 from logic.profile import ProfileService
-
-# dentro de ProfileMapService.get_map_data
-repo = ProfileRepositoryMockup()
-service = ProfileService(repository=repo)
-profiles = service.get_all_profiles()
-
-# Gerar os mapas: id → cor e id → título
-color_map = {p.id: p.color for p in profiles}
-title_map = {p.id: p.title for p in profiles}
+import pandas as pd
 
 @dataclass
 class InvestorCluster:
     city: str
-    investor_profile: str
+    investor_profile: int
     latitude: float
     longitude: float
     quantity: int
@@ -29,18 +22,31 @@ class ProfileMapData:
     cluster: List[InvestorCluster]
     color_map: Dict[int, str]
     title_map: Dict[int, str]
+    profile_filter: Optional[int] = None
 
 class ProfileMapService:
 
     def __init__(self, repository: ProfileMapRepository):
         self._repository = repository
 
-    def get_map_data(self, profile_filter: Optional[str] = None) -> ProfileMapData:
+    def get_map_data(self, profile_filter: Optional[int] = None) -> ProfileMapData:
         geojson = self._repository.get_geojson_data()
         states_df = self._repository.get_states_data()
         clusters_df = self._repository.get_cluster_data()
 
-        # Df to list of domain objects
+        # Filtragem por perfil (ocorre antes da transformação)
+        if profile_filter is not None:
+            clusters_df = clusters_df[clusters_df["Perfil_Investidor"] == profile_filter]
+
+        # Buscar perfis e montar mapeamentos
+        profile_repo = ProfileRepositoryMockup()
+        profile_service = ProfileService(profile_repo)
+        profiles = profile_service.get_all_profiles()
+
+        color_map = {p.id: p.color for p in profiles}
+        title_map = {p.id: p.title for p in profiles}
+
+        # Converter para lista de objetos InvestorCluster
         investor_clusters = [
             InvestorCluster(
                 city=row['Cidade'],
@@ -57,8 +63,6 @@ class ProfileMapService:
             states_df=states_df,
             cluster=investor_clusters,
             color_map=color_map,
-            title_map=title_map
+            title_map=title_map,
+            profile_filter=profile_filter
         )
-    
-
-        

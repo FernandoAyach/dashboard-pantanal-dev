@@ -7,7 +7,6 @@ from data.profile_repository_mockup import ProfileRepositoryMockup
 from logic.profile import ProfileService
 from data.investor_details_repository_mockup import InvestorDetailsRepository
 from logic.investor_details import InvestorDetailsService
-from presentation.components.pie_charts import show_profile_pies
 
 def profile_details_view(profile_id: int):
     profile_repo = ProfileRepositoryMockup()
@@ -40,9 +39,20 @@ def profile_details_view(profile_id: int):
 
     df_investidores["FaixaEtaria"] = df_investidores["Idade"].apply(classificar_faixa_etaria)
 
-    def gerar_pie(dados, coluna, titulo):
-        contagem = dados[coluna].value_counts().reset_index()
+    def gerar_pie(dados, coluna, titulo, top_n=None):
+        contagem = dados[coluna].value_counts()
+
+        if top_n is not None:
+            top_categorias = contagem.head(top_n)
+            outros = contagem.iloc[top_n:].sum()
+            
+            contagem = top_categorias.copy()
+            if outros > 0:
+                contagem["OUTROS"] = outros
+
+        contagem = contagem.reset_index()
         contagem.columns = [coluna, "quantidade"]
+
         fig = px.pie(contagem, names=coluna, values="quantidade", title=titulo, hole=0.4)
         fig.update_traces(textposition='inside', textinfo='percent+label')
         return fig
@@ -52,6 +62,8 @@ def profile_details_view(profile_id: int):
 
     # Gráfico de distribuição pelos estados
     estado_fig = gerar_pie(df_investidores, "UF", "Distribuição pelos estados do Brasil")
+
+    cidade_fig = gerar_pie(df_investidores, "Cidade", "Principais Cidades", top_n=40)
 
     col1, col2 = st.columns([1.5, 1])
 
@@ -103,8 +115,12 @@ def profile_details_view(profile_id: int):
         """, unsafe_allow_html=True)
 
         st.markdown(perfil.description)
+        
+        with st.container(border=True):
+            st.plotly_chart(estado_fig, use_container_width=True)
 
-        st.plotly_chart(estado_fig, use_container_width=True)
+        with st.container(border=True):
+            st.plotly_chart(cidade_fig, use_container_width=True)
 
         if st.button("Voltar para lista"):
             del st.session_state["selected_profile_id"]
